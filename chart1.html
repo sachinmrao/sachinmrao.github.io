@@ -59,7 +59,7 @@
     // column we want to plot
     var radius = 3,
         field = 'San Francisco',
-        x_field = "Number Of Reviews",
+        x_field = "Neighbourhood",
         y_field = "Price";
   
     // Append the title for the graph
@@ -151,16 +151,8 @@
             return 2;
           })
           .style('fill', function(d) {
-            switch (d['Room Type']) {
-              case 'Entire home/apt':
-                return 'red';
-              case 'Private room':
-                return 'green'
-              case 'Shared room':
                 return 'blue';
-              default:
-                return 'gray';
-            }
+
           });
     }
   </script>
