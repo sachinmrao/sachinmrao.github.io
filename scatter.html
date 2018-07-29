@@ -44,7 +44,7 @@ body {
 </select>
 <script>
 function onDDLChange(){
-var value = this.value;
+var value = document.getElementById('myddl').value;
 drawGraph(value);
 //   svg.select('#g').selectAll("*").remove();
 //   makeGraph("#Network_graph", fdata);
@@ -101,6 +101,7 @@ d3.csv("airbnbcsv.csv", function(error, idata) {
             { 
                 console.log("Neighb: "+ d.Neighbourhood);
                 console.log("ddlVal: "+ ddlVal);
+                console.log("d: "+ JSON.stringify(d));
                 return d;
             } 
 
