@@ -87,8 +87,19 @@ var tooltip = d3.select("body").append("div")
 
 // load data
 function drawGraph(ddlVal) {
-d3.csv("airbnbcsv.csv", function(error, data) {
+d3.csv("airbnbcsv.csv", function(error, idata) {
 
+    var data = idata.filter(function(d) 
+    { 
+
+            if(ddlVal=='ALL'||!ddlVal|| d.Neighbourhood==ddlVal)
+            { 
+                Console.log("Neighb: "+ d.Neighbourhood);
+                Console.log("ddlVal: "+ ddlVal);
+                return d;
+            } 
+
+        });
   // change string (from CSV) into number format
   data.forEach(function(d) {
     d.Price = +d.Price;
@@ -155,8 +166,8 @@ if(ddl)
 ddl.addEventListener("change", onDDLChange);
 
 function onDDLChange(){
-//   var value = this.value;
-//   var fdata = filteredData(value);
+var value = this.value;
+drawGraph(value);
 //   svg.select('#g').selectAll("*").remove();
 //   makeGraph("#Network_graph", fdata);
 }
