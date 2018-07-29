@@ -104,8 +104,6 @@ d3.csv("airbnbsum.csv", function(d) {
       .style("opacity", 0);	
   })
   .on("click", function(d) {
-        alert("on click d.data.Neighbourhood" + d.data.Neighbourhood);
-        alert("on click d.data.Neighbourhood" + d.Neighbourhood);
         location.href='scatter.html?n='+d.data.Neighbourhood;
     });
 
