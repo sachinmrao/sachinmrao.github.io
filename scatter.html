@@ -43,7 +43,10 @@ body {
         <option value="Staten Island">Staten Island</option>
 </select>
 <script>
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+
+function drawGraph(ddlVal) {
+
+var margin = {top: 50, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -166,7 +169,8 @@ d3.csv("airbnbcsv.csv", function(error, data) {
 //       .style("text-anchor", "end")
 //       .text(function(d) { return d;})
 });
-
+}
+ddlVal();
 var ddl = document.getElementById('myddl');
 ddl.addEventListener("change", onDDLChange);
 
