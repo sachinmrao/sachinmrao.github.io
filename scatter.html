@@ -69,7 +69,7 @@ var xValue = function(d) { return d.Review;}, // data -> value
     xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
 // setup y
-var yValue = function(d) { return d["Price"];}, // data -> value
+var yValue = function(d) {if(!d["Price"])return 0; return d["Price"];}, // data -> value
     yScale = d3.scale.linear().range([height, 0]), // value -> display
     yMap = function(d) { return yScale(yValue(d));}, // data -> display
     yAxis = d3.svg.axis().scale(yScale).orient("left");
@@ -97,11 +97,11 @@ d3.csv("airbnbcsv.csv", function(error, idata) {
     var data = idata.filter(function(d) 
     { 
 
-            if(ddlVal=='ALL'||!ddlVal|| d.Neighbourhood==ddlVal)
+            if(ddlVal=='ALL'||!ddlVal|| d["Neighbourhood "]==ddlVal)
             { 
-                console.log("Neighb: "+ d.Neighbourhood);
+                console.log("Neighb: "+ d["Neighbourhood "]);
                 console.log("ddlVal: "+ ddlVal);
-                console.log("d: "+ JSON.stringify(d));
+                //console.log("d: "+ JSON.stringify(d));
                 return d;
             } 
 
@@ -154,7 +154,7 @@ d3.csv("airbnbcsv.csv", function(error, idata) {
           tooltip.transition()
                .duration(200)
                .style("opacity", 1);
-          tooltip.html( d["Name"]  + "<br/> Review % :" + xValue(d) 
+          tooltip.html( d["Neighbourhood "]+"--"+d["Name"]  + "<br/> Review % :" + xValue(d) 
 	        + "<br/> Price :" + yValue(d) + ")")
                .style("left", (d3.event.pageX + 5) + "px")
                .style("top", (d3.event.pageY - 28) + "px");
