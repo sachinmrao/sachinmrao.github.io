@@ -34,6 +34,7 @@ body {
 </style>
 <body>
 <script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <select id="myddl" style="position:absolute;top:20px;left:20px;" onchange="onDDLChange();">
         <option value="ALL">--ALL--</option>
         <option value="Bronx">Bronx</option>
@@ -50,7 +51,9 @@ drawGraph(value);
 //   makeGraph("#Network_graph", fdata);
 }
 
-
+function drawGraph(ddlVal) {
+if(svg)
+    $('#svg').remove();
 var margin = {top: 50, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -91,7 +94,7 @@ var tooltip = d3.select("body").append("div")
     .style("opacity", 100);
 
 // load data
-function drawGraph(ddlVal) {
+
 d3.csv("airbnbcsv.csv", function(error, idata) {
 
     var data = idata.filter(function(d) 
