@@ -100,7 +100,10 @@ d3.csv("airbnbsum.csv", function(d) {
     div.transition()		
       .duration(500)		
       .style("opacity", 0);	
-  });
+  })
+  .on("click", function(d) {
+        alert("on click" + JSON.stringify(d));
+    });
 
   
   
@@ -146,9 +149,6 @@ d3.csv("airbnbsum.csv", function(d) {
   
 });
 
-d3.selectAll(".datamaps-bubble").on('click', function(bubble) {
-    console.log(bubble);
-    alert('clicked');
-});
+
 
 </script>
