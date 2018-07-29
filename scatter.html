@@ -51,6 +51,16 @@ drawGraph(value);
 //   makeGraph("#Network_graph", fdata);
 }
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 function drawGraph(ddlVal) {
 
 $('svg').remove();
@@ -170,7 +180,11 @@ d3.csv("airbnbcsv.csv", function(error, idata) {
       });
 });
 }
-drawGraph();
+
+var qtr=getParameterByName('n');
+if(qtr && qtr!='')
+    document.getElementById('myddl').value=qtr;
+drawGraph(qtr);
 
 
 
