@@ -79,7 +79,8 @@ d3.csv("airbnbsum.csv", function(d) {
       .attr("id", function(d) { return d.id; })
       .attr("r", function(d) { return d.r; })
       .style("fill", function(d) { return color(d.data.Neighbourhood); })
-      .on("mouseover", function(d) {		
+      .on("mouseover", function(d) {	
+        d3.select(this).style("cursor", "pointer"); 	
     div.transition()		
       .duration(200)		
       .style("opacity", .9);	
@@ -96,13 +97,16 @@ d3.csv("airbnbsum.csv", function(d) {
       .style("left", (d3.event.pageX) + "px")		
       .style("top", (d3.event.pageY - 28) + "px");	
   })					
-    .on("mouseout", function(d) {		
+    .on("mouseout", function(d) {	
+    d3.select(this).style("cursor", "default"); 	
     div.transition()		
       .duration(500)		
       .style("opacity", 0);	
   })
   .on("click", function(d) {
-        alert("on click" + JSON.stringify(d));
+        alert("on click d.data.Neighbourhood" + d.data.Neighbourhood);
+        alert("on click d.data.Neighbourhood" + d.Neighbourhood);
+        location.href='scatter.html?n='+d.data.Neighbourhood;
     });
 
   
