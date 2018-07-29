@@ -172,6 +172,7 @@ d3.csv("airbnbcsv.csv", function(error, data) {
 }
 ddlVal();
 var ddl = document.getElementById('myddl');
+if(ddl)
 ddl.addEventListener("change", onDDLChange);
 
 function onDDLChange(){
