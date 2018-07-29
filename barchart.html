@@ -27,8 +27,7 @@ var svg = d3.select("svg"),
     height = +svg.attr("height") - margin.top - margin.bottom;
 
 var x = d3.scaleLinear()
-    .rangeRound([0, width])
-    .padding(0.1);//d3.scaleLinear().rangeRound([height, 0]);//scaleBand().rangeRound([0, width]).padding(0.1),
+    .rangeRound([0, width]);//d3.scaleLinear().rangeRound([height, 0]);//scaleBand().rangeRound([0, width]).padding(0.1),
     y = d3.scaleLinear().rangeRound([height, 0]);
 
 var g = svg.append("g")
