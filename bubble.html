@@ -52,7 +52,7 @@ var pack = d3.pack()
 
 d3.csv("airbnbsum.csv", function(d) {
   d.value = +d["Count"];
-  d.Neighborhood = d["Neighborhood"]
+  d.Neighbourhood = d["Neighbourhood"]
 
  	return d;
 }, function(error, data) {
@@ -61,7 +61,7 @@ d3.csv("airbnbsum.csv", function(d) {
   
  
   var color = d3.scaleOrdinal()
-  .domain(data.map(function(d){ return d.Neighborhood;}))
+  .domain(data.map(function(d){ return d.Neighbourhood;}))
   .range(['#fbb4ae','#b3cde3','#ccebc5','#decbe4','#fed9a6',
   '#ffe9a8','#b9bfe3','#fddaec','#cccccc']);
   
@@ -78,7 +78,7 @@ d3.csv("airbnbsum.csv", function(d) {
   node.append("circle")
       .attr("id", function(d) { return d.id; })
       .attr("r", function(d) { return d.r; })
-      .style("fill", function(d) { return color(d.data.Neighborhood); })
+      .style("fill", function(d) { return color(d.data.Neighbourhood); })
       .on("mouseover", function(d) {		
     div.transition()		
       .duration(200)		
@@ -86,13 +86,13 @@ d3.csv("airbnbsum.csv", function(d) {
     
       var duration = 300;
   data.forEach(function(d, i) {
-    console.log(d.value);
+    console.log(JSON.stringify(d));
     node.transition().duration(duration).delay(i * duration)
         .attr("r", d.value);
 });
      
     
-    div.html(d.data.Neighborhood + ": <br>"+d.data.value  )	
+    div.html(d.data.Neighbourhood + ": <br>"+d.data.value  )	
       .style("left", (d3.event.pageX) + "px")		
       .style("top", (d3.event.pageY - 28) + "px");	
   })					
@@ -106,10 +106,8 @@ d3.csv("airbnbsum.csv", function(d) {
   
    node.append("text")
       .text(function(d) {
-     if (d.data.value > 748|| d.data.Neighborhood == "Other" || d.data.Neighborhood == "Fire"){
-       return d.data.Neighborhood;
-     }
-     return "";});
+        return d.data.Neighbourhood;
+    });
   
   
 
@@ -125,7 +123,7 @@ d3.csv("airbnbsum.csv", function(d) {
      .attr("y", function(d, i) { return 20 * i; })
      .attr("width", 15)
      .attr("height", 15)
-		.style("fill", function(d) { return color(d.Neighborhood)});
+		.style("fill", function(d) { return color(d.Neighbourhood)});
    
 
     legend.append("text")
@@ -133,7 +131,7 @@ d3.csv("airbnbsum.csv", function(d) {
     	.attr("text-anchor", "start")
      .attr("dy", "1em") 
      .attr("y", function(d, i) { return 20 * i; })
-     .text(function(d) {return d.Neighborhood;})
+     .text(function(d) {return d.Neighbourhood;})
     .attr("font-size", "12px"); 
   
       
