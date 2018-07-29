@@ -34,7 +34,7 @@ body {
 </style>
 <body>
 <script src="https://d3js.org/d3.v3.min.js"></script>
-<select id="myddl" style="position:absolute;top:20px;left:20px;">
+<select id="myddl" style="position:absolute;top:20px;left:20px;" onchange="onDDLChange();">
         <option value="ALL">--ALL--</option>
         <option value="Bronx">Bronx</option>
         <option value="Brooklyn">Brooklyn</option>
@@ -43,7 +43,12 @@ body {
         <option value="Staten Island">Staten Island</option>
 </select>
 <script>
-
+function onDDLChange(){
+var value = this.value;
+drawGraph(value);
+//   svg.select('#g').selectAll("*").remove();
+//   makeGraph("#Network_graph", fdata);
+}
 
 
 var margin = {top: 50, right: 20, bottom: 30, left: 40},
@@ -161,16 +166,9 @@ d3.csv("airbnbcsv.csv", function(error, idata) {
 });
 }
 drawGraph();
-var ddl = document.getElementById('myddl');
-if(ddl)
-ddl.addEventListener("change", onDDLChange);
 
-function onDDLChange(){
-var value = this.value;
-drawGraph(value);
-//   svg.select('#g').selectAll("*").remove();
-//   makeGraph("#Network_graph", fdata);
-}
+
+
 
 </script>
 
