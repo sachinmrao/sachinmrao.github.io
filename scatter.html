@@ -184,7 +184,8 @@ d3.csv("airbnbcsv.csv", function(error, idata) {
 var qtr=getParameterByName('n');
 if(qtr && qtr!='')
     document.getElementById('myddl').value=qtr;
-drawGraph(qtr);
+else
+ drawGraph(qtr);
 
 
 
