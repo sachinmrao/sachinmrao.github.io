@@ -11,6 +11,37 @@ body {
   font: 11px sans-serif;
 }
 
+
+body
+{
+    background-color:#D8D3B4;
+    padding: 50px;
+}
+
+div.fixed {
+    position: fixed;
+    font-weight: bold;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    border: 2px solid #CCCCCC;
+    font-size: 16px;
+    padding: 20px;
+    background-color: #FFFFFF;
+}
+div.fixedL {
+    position: fixed;
+    font-weight: bold;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    border: 2px solid #CCCCCC;
+    font-size: 16px;
+    padding: 20px;
+    background-color: #FFFFFF;
+}   
+  
+
 .axis path,
 .axis line {
   fill: none;
@@ -43,6 +74,8 @@ body {
         <option value="Queens">Queens</option>
         <option value="Staten Island">Staten Island</option>
 </select>
+<div class="fixedL"><a href="bubble.html"> &lt; Prev</a></div>
+<div class="fixed"><a href="References.html">Next ></a></div>
 <script>
 function onDDLChange(){
 var value = document.getElementById('myddl').value;
@@ -184,8 +217,7 @@ d3.csv("airbnbcsv.csv", function(error, idata) {
 var qtr=getParameterByName('n');
 if(qtr && qtr!='')
     document.getElementById('myddl').value=qtr;
-
- drawGraph(qtr);
+drawGraph(qtr);
 
 
 
