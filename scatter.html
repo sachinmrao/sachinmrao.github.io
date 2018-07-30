@@ -61,16 +61,18 @@ div.fixedL {
 </style>
 <body>
     <h3>Scatter Plot of Price vs Rating for AirBnB Properties</h3>
+    <br/>
+    <select id="myddl" style="position:absolute;top:20px;left:20px;" onchange="onDDLChange();">
+            <option value="ALL">--ALL--</option>
+            <option value="Bronx">Bronx</option>
+            <option value="Brooklyn">Brooklyn</option>
+            <option value="Manhattan">Manhattan</option>
+            <option value="Queens">Queens</option>
+            <option value="Staten Island">Staten Island</option>
+    </select>    
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<select id="myddl" style="position:absolute;top:20px;left:20px;" onchange="onDDLChange();">
-        <option value="ALL">--ALL--</option>
-        <option value="Bronx">Bronx</option>
-        <option value="Brooklyn">Brooklyn</option>
-        <option value="Manhattan">Manhattan</option>
-        <option value="Queens">Queens</option>
-        <option value="Staten Island">Staten Island</option>
-</select>
+
 <div class="fixedL"><a href="bubble.html"> &lt; Prev</a></div>
 <div class="fixed"><a href="References.html">Next ></a></div>
 <script>
